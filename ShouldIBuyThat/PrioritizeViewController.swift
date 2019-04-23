@@ -1,23 +1,18 @@
 //
-//  ViewController.swift
+//  PrioritizeViewController.swift
 //  ShouldIBuyThat
 //
-//  Created by Ariana on 4/18/19.
+//  Created by Ariana on 4/22/19.
 //  Copyright © 2019 Ariana. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, PopupDelegate {
-    @IBOutlet weak var howManyHrsLbl: UILabel!
+class PrioritizeViewController: UIViewController, PopupDelegate {
     var date: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    @IBAction func findOutClicked(_ sender: UIButton) {
-        print(date)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
@@ -28,9 +23,4 @@ class ViewController: UIViewController, PopupDelegate {
     func popupValueSelected(value: String) {
         date = value
     }
-   
 }// end class
-
-
-
-

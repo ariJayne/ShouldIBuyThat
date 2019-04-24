@@ -261,6 +261,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="4te-Cu-BOy" id="HYy-So-SHj"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="of item" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C7q-6P-rDc">
                                                         <rect key="frame" x="0.0" y="40" width="271" height="30"/>
@@ -268,6 +271,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="4te-Cu-BOy" id="P0L-Gd-OD4"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rate per hour" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nOn-mJ-0Lg">
                                                         <rect key="frame" x="0.0" y="80" width="271" height="30"/>
@@ -275,6 +281,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="4te-Cu-BOy" id="ZCR-5L-SR5"/>
+                                                        </connections>
                                                     </textField>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-Op-tJ1">
                                                         <rect key="frame" x="0.0" y="120" width="271" height="30"/>
@@ -313,6 +322,9 @@
                                                 <state key="normal" title="Add to list!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="addToListClicked:" destination="4te-Cu-BOy" eventType="touchUpInside" id="qE9-Ht-vCn"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -335,6 +347,13 @@
                         <viewLayoutGuide key="safeArea" id="08W-DE-Nfq"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Prioritize" id="fax-uw-bUL"/>
+                    <connections>
+                        <outlet property="costLbl" destination="C7q-6P-rDc" id="jUb-NO-ZmK"/>
+                        <outlet property="itemLbl" destination="jgz-6Z-eVS" id="U6n-iY-y1l"/>
+                        <outlet property="priorityLbl" destination="vEc-qc-RDd" id="1FU-rk-jIb"/>
+                        <outlet property="prioritySlider" destination="KKG-Cm-zFi" id="uoL-JP-SZN"/>
+                        <outlet property="rateLbl" destination="nOn-mJ-0Lg" id="hpM-2D-mDJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CN-Hr-fGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -442,6 +461,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eHA-nl-Xrp"/>
+        <segue reference="pBU-wC-vSB"/>
     </inferredMetricsTieBreakers>
 </document>

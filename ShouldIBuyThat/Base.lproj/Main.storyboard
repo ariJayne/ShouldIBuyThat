@@ -64,18 +64,27 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="GNB-Qc-8nD"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="of item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfk-Bh-Ypc">
                                                         <rect key="frame" x="0.0" y="40" width="153.5" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="e7c-ie-JQa"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rate per hour" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z1a-Wg-qPB">
                                                         <rect key="frame" x="0.0" y="80" width="153.5" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="imE-or-lKv"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -172,7 +181,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="SIBT" id="upT-C3-fZT"/>
                     <connections>
+                        <outlet property="addBtn" destination="b1u-NR-vKd" id="zKI-nQ-JwD"/>
+                        <outlet property="clickHerebtn" destination="m9w-5e-F4M" id="CE2-9N-izH"/>
+                        <outlet property="costLbl" destination="Mfk-Bh-Ypc" id="PYa-VY-fw3"/>
                         <outlet property="howManyHrsLbl" destination="WnL-qI-SGc" id="DGM-RQ-iVE"/>
+                        <outlet property="howMuchLbl" destination="z1a-Wg-qPB" id="GJw-eH-niH"/>
+                        <outlet property="whatLbl" destination="svF-CY-2CL" id="K6X-HA-npC"/>
+                        <outlet property="whenBtn" destination="GSe-IL-FIi" id="1ce-rj-TgF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

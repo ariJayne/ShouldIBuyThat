@@ -9,5 +9,6 @@
 import Foundation
 
 protocol PopupDelegate {
-    func popupValueSelected(value:String)
+    func popupDoneSelected(value: Date)
+    func popupWheneverSelected(value: String)
 }

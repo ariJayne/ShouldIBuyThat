@@ -18,10 +18,22 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
     @IBOutlet weak var clickHerebtn: UIButton!
     @IBOutlet weak var addBtn: UIButton!
     
-    var date: String = ""
+    // format decimal places
+    let numberFormatter: NumberFormatter = {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        nf.minimumFractionDigits = 0
+        nf.maximumFractionDigits = 2
+        return nf
+    }()
+    
+    var date: Date?
+    var whenever: String = ""
+    var selected: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))) // allows user to tap outside of keyboard to close it (for the decimal keyboards)
     }
     
@@ -36,8 +48,6 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
     }
  
     @IBAction func findOutClicked(_ sender: UIButton) {
-        // do calculations with values entered by user
-        // first make sure all fields have been filled
         /* if they did not select whenever:
             -FIRST CHECK DATE IS AHEAD OF TODAY, IF ANSWER
                 IS 0, then only account for today)
@@ -50,9 +60,33 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
         let what = whatLbl.text!
         let cost = costLbl.text!
         let rate = howMuchLbl.text!
-        
+        let currentDate = Date()
         
         validateFor(what: what,cost: cost,rate: rate)
+        
+       
+        if let c = Double(cost), let r = Double(rate)
+        {
+            let hoursNeeded = c / r
+            //if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded))
+            //{
+                if selected == true // if done is selected
+            {
+                if let date = date
+                {
+                    let components = Calendar.current.dateComponents([.day], from: currentDate, to: date)
+                    if let daysDifference = components.day
+                    {
+                        let hoursPerDay = hoursNeeded / Double(daysDifference)
+                        print(hoursPerDay)
+                    }
+                }
+            } else // if whenever is selected
+                {
+                    // display hours needed only
+                }
+            //}
+        }
         /*
          if whenever,
             only need to do cost of item / rate per hour to get total hours needed, can / 8 to see how many 8 hour days it would take.
@@ -60,7 +94,7 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
     }
     
    func validateFor(what: String, cost: String, rate: String) {
-        if (what.isEmpty || cost.isEmpty || rate.isEmpty)
+        if what.isEmpty || cost.isEmpty || rate.isEmpty
         {
             var myAlert = UIAlertController(title: "Alert", message: "All fields required", preferredStyle: UIAlertController.Style.alert)
             
@@ -79,9 +113,15 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
         popup.delegate = self
     }
     
-    func popupValueSelected(value: String) {
-        date = value
+    func popupWheneverSelected(value: String) {
+        whenever = value
+        selected = false
     }
+    func popupDoneSelected(value: Date) {
+        date = value
+        selected = true
+    }
+    
    
 }// end class
 

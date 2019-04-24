@@ -20,11 +20,13 @@ class DatePopupViewController: UIViewController {
     
     // create property to format date
     // read only / computed
-    var formattedDate: String {
+   /* var formattedDate: String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .full
         return formatter.string(from: datePicker.date)
     }
+    */
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +34,15 @@ class DatePopupViewController: UIViewController {
     }
     
     @IBAction func wheneverBtnClicked(_ sender: UIButton) {
-        delegate?.popupValueSelected(value: whenever)
+        delegate?.popupWheneverSelected(value: whenever)
         dismiss(animated: true)
     }
     
     @IBAction func doneBtnClicked(_ sender: UIButton) {
+        let date = datePicker.date
         // call doneClicked func to pass the date
         //doneClicked?(formattedDate)// optional in case nil
-        delegate?.popupValueSelected(value: formattedDate)
+        delegate?.popupDoneSelected(value: date)
         dismiss(animated: true)
     }// end doneBtnClicked func
     

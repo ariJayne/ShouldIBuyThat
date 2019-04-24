@@ -16,7 +16,8 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
     @IBOutlet weak var priorityLbl: UILabel!
     @IBOutlet weak var prioritySlider: UISlider!
     
-    var date: String = ""
+    var date: Date?
+    var whenever: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,6 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
         let item = itemLbl.text!
         let cost = costLbl.text!
         let rate = rateLbl.text!
-        
         
        validateFor(what: item,cost: cost,rate: rate)
         
@@ -63,7 +63,11 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
         popup.delegate = self
     }
     
-    func popupValueSelected(value: String) {
+    func popupWheneverSelected(value: String) {
+        whenever = value
+    }
+    
+    func popupDoneSelected(value: Date) {
         date = value
     }
     

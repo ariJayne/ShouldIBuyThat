@@ -18,6 +18,7 @@ class DatePopupViewController: UIViewController {
     var whenever: String = "whenever" // to be passed back to show whenever was clicked
     var delegate: PopupDelegate?
     
+    
     // create property to format date
     // read only / computed
    /* var formattedDate: String {
@@ -30,7 +31,7 @@ class DatePopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
     }
     
     @IBAction func wheneverBtnClicked(_ sender: UIButton) {

@@ -17,6 +17,7 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
     @IBOutlet weak var whenBtn: UIButton!
     @IBOutlet weak var clickHerebtn: UIButton!
     @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var displayLbl: UILabel!
     
     // format decimal places
     let numberFormatter: NumberFormatter = {
@@ -38,7 +39,8 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = "" // clear texfield when user taps
+        textField.text = ""
+        addBtn.isHidden = true
     }
    
     
@@ -60,38 +62,48 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
         let what = whatLbl.text!
         let cost = costLbl.text!
         let rate = howMuchLbl.text!
-        let currentDate = Date()
-        
+        var currentDate = Date()
+        let calendar = Calendar(identifier: .gregorian)
+        // set dates to same time for comparison
+        currentDate = calendar.startOfDay(for: currentDate)
+        if let d = date
+        {
+        date = calendar.startOfDay(for: d)
+        }
         validateFor(what: what,cost: cost,rate: rate)
         
        
         if let c = Double(cost), let r = Double(rate)
         {
-            let hoursNeeded = c / r
-            //if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded))
-            //{
-                if selected == true // if done is selected
+            var hoursNeeded = c / r
+        
+        
+        if selected == true // if done is selected
+        {
+            if let date = date
             {
-                if let date = date
+                let components = Calendar.current.dateComponents([.day], from: currentDate, to: date) // get amt days between current date and date chosen
+                if let daysDifference = components.day
                 {
-                    let components = Calendar.current.dateComponents([.day], from: currentDate, to: date)
-                    if let daysDifference = components.day
+                    let hoursPerDay = hoursNeeded / Double(daysDifference)
+                    if let hoursPerDay = numberFormatter.string(from: NSNumber(value: hoursPerDay))
                     {
-                        let hoursPerDay = hoursNeeded / Double(daysDifference)
-                        print(hoursPerDay)
+                        print(daysDifference, hoursPerDay)
                     }
                 }
-            } else // if whenever is selected
+            }
+        } else // if whenever is selected
+            {
+                if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded))
                 {
-                    // display hours needed only
+                    print(hoursNeeded)
+                    displayLbl.text = "\(hoursNeeded) Hours"
                 }
-            //}
+            }
+            addBtn.isHidden = false
         }
-        /*
-         if whenever,
-            only need to do cost of item / rate per hour to get total hours needed, can / 8 to see how many 8 hour days it would take.
-        */
-    }
+        
+    }// end findOutClicked function
     
    func validateFor(what: String, cost: String, rate: String) {
         if what.isEmpty || cost.isEmpty || rate.isEmpty

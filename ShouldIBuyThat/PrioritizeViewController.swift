@@ -16,6 +16,10 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
     @IBOutlet weak var priorityLbl: UILabel!
     @IBOutlet weak var prioritySlider: UISlider!
     
+    var name = String()
+    var price = String()
+    var payRate = String()
+    
     var date: Date?
     var whenever: String = ""
     
@@ -26,11 +30,12 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
     }
     
     @IBAction func addToListClicked(_ sender: UIButton) {
+        
         let item = itemLbl.text!
         let cost = costLbl.text!
         let rate = rateLbl.text!
         
-       validateFor(what: item,cost: cost,rate: rate)
+        validateFor(what: item,cost: cost,rate: rate)
         
     }
     

@@ -18,9 +18,8 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
     @IBOutlet weak var clickHerebtn: UIButton!
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var displayLbl: UILabel!
-    
-    // format decimal places
-    let numberFormatter: NumberFormatter = {
+
+    let numberFormatter: NumberFormatter = { // format for decimal places
         let nf = NumberFormatter()
         nf.numberStyle = .decimal
         nf.minimumFractionDigits = 0
@@ -48,6 +47,7 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
  
     @IBAction func findOutClicked(_ sender: UIButton) {
         /* if they did not select whenever:
@@ -59,70 +59,93 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
             if hours exceed 24 per day, say not possible
             if hours exceed 12 per day, set a warning
          */
-        let what = whatLbl.text!
-        let cost = costLbl.text!
-        let rate = howMuchLbl.text!
+        let what = whatLbl.text
+        let cost = costLbl.text
+        let rate = howMuchLbl.text
+        
         var currentDate = Date()
-        let calendar = Calendar(identifier: .gregorian)
-        // set dates to same time for comparison
+        let calendar = Calendar(identifier: .gregorian) // use to set times of each date for easy comparison
+        
         currentDate = calendar.startOfDay(for: currentDate)
         if let d = date
         {
-        date = calendar.startOfDay(for: d)
+            date = calendar.startOfDay(for: d)
         }
+        
         validateFor(what: what,cost: cost,rate: rate)
         
        
-        if let c = Double(cost), let r = Double(rate)
+        if let cost = cost, let c = Double(cost), let rate = rate, let r = Double(rate)
         {
-            var hoursNeeded = c / r
+            let hoursNeeded = c / r
         
-        
-        if selected == true // if done is selected
-        {
-            if let date = date
+            if selected == true // if done is selected
             {
-                let components = Calendar.current.dateComponents([.day], from: currentDate, to: date) // get amt days between current date and date chosen
-                if let daysDifference = components.day
+                if let date = date
                 {
-                    let hoursPerDay = hoursNeeded / Double(daysDifference)
-                    if let hoursPerDay = numberFormatter.string(from: NSNumber(value: hoursPerDay))
+                    let components = Calendar.current.dateComponents([.day], from: currentDate, to: date) // get amt days between current date and date chosen
+                    if let daysDifference = components.day
                     {
-                        print(daysDifference, hoursPerDay)
+                        let hoursPerDay = hoursNeeded / Double(daysDifference)
+                        if let hoursPerDay = numberFormatter.string(from: NSNumber(value: hoursPerDay))
+                        {
+                            print(daysDifference, hoursPerDay)
+                        }
                     }
                 }
-            }
-        } else // if whenever is selected
-            {
-                if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded))
+            } else // if whenever is selected
                 {
-                    print(hoursNeeded)
-                    displayLbl.text = "\(hoursNeeded) Hours"
+                    if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded))
+                    {
+                        print(hoursNeeded)
+                        displayLbl.text = "\(hoursNeeded) Hours"
+                    }
                 }
+                addBtn.isHidden = false
             }
-            addBtn.isHidden = false
-        }
         
     }// end findOutClicked function
     
-   func validateFor(what: String, cost: String, rate: String) {
+    @IBAction func addToPrioritizeClicked(_ sender: UIButton) {
+        
+        validateFor(what: whatLbl.text, cost: costLbl.text, rate: howMuchLbl.text)
+        performSegue(withIdentifier: "toPrioritizeViewController", sender: self)
+        
+    }
+    
+    
+   func validateFor(what: String?, cost: String?, rate: String?) {
+    if let what = what, let cost = cost, let rate = rate
+    {
         if what.isEmpty || cost.isEmpty || rate.isEmpty
-        {
-            var myAlert = UIAlertController(title: "Alert", message: "All fields required", preferredStyle: UIAlertController.Style.alert)
+            {
+                let myAlert = UIAlertController(title: "Alert", message: "All fields required", preferredStyle: UIAlertController.Style.alert)
             
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil )
+                let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil )
             
-            myAlert.addAction(okAction)
-            self.present(myAlert, animated: true)
-             return
+                myAlert.addAction(okAction)
+                self.present(myAlert, animated: true)
+                return
+            }
         }
     }
     
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
-        let popup = segue.destination as! DatePopupViewController // destination is the VC the segue is going TO
-        popup.delegate = self
+        if segue.identifier == "toDatePopupviewController"
+        {
+            let popup = segue.destination as! DatePopupViewController // destination is the VC the segue is going TO
+            popup.delegate = self
+            
+        } else if segue.identifier == "toPrioritizeViewController"
+        {
+            let prioritizeVC = segue.destination as! PrioritizeViewController
+            
+            prioritizeVC.name = whatLbl.text ?? ""
+            prioritizeVC.payRate = howMuchLbl.text ?? ""
+            prioritizeVC.price = costLbl.text ?? ""
+        }
     }
     
     func popupWheneverSelected(value: String) {

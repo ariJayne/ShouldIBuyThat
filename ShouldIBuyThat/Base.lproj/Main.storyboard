@@ -152,6 +152,9 @@
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="addToPrioritizeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1he-Uf-8dV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -211,6 +214,7 @@
                         <outlet property="howMuchLbl" destination="z1a-Wg-qPB" id="GJw-eH-niH"/>
                         <outlet property="whatLbl" destination="svF-CY-2CL" id="K6X-HA-npC"/>
                         <outlet property="whenBtn" destination="GSe-IL-FIi" id="1ce-rj-TgF"/>
+                        <segue destination="4te-Cu-BOy" kind="presentation" identifier="toPrioritizeViewConroller" id="tcf-W4-Hy9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -235,7 +239,7 @@
                                 <rect key="frame" x="10" y="94" width="355" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ehV-dB-bCI">
-                                        <rect key="frame" x="9" y="0.0" width="337.5" height="150"/>
+                                        <rect key="frame" x="5" y="0.0" width="345.5" height="150"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="FrM-9r-ZEg">
                                                 <rect key="frame" x="0.0" y="0.0" width="64" height="150"/>
@@ -276,10 +280,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-G7-5nN">
-                                                <rect key="frame" x="84" y="0.0" width="253.5" height="150"/>
+                                                <rect key="frame" x="84" y="0.0" width="261.5" height="150"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="type item name here" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgz-6Z-eVS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="253.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="261.5" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.86274509799999999" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -289,7 +293,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="of item" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C7q-6P-rDc">
-                                                        <rect key="frame" x="0.0" y="40" width="253.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="40" width="261.5" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.86274509799999999" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -299,7 +303,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rate per hour" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nOn-mJ-0Lg">
-                                                        <rect key="frame" x="0.0" y="80" width="253.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="80" width="261.5" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.86274509799999999" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -309,7 +313,7 @@
                                                         </connections>
                                                     </textField>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-Op-tJ1">
-                                                        <rect key="frame" x="0.0" y="120" width="253.5" height="30"/>
+                                                        <rect key="frame" x="0.0" y="120" width="261.5" height="30"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Med" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEc-qc-RDd">
                                                                 <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
@@ -318,7 +322,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="KKG-Cm-zFi">
-                                                                <rect key="frame" x="40" y="0.0" width="215.5" height="31"/>
+                                                                <rect key="frame" x="40" y="0.0" width="223.5" height="31"/>
                                                             </slider>
                                                         </subviews>
                                                     </stackView>
@@ -489,5 +493,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="eHA-nl-Xrp"/>
+        <segue reference="tcf-W4-Hy9"/>
     </inferredMetricsTieBreakers>
 </document>

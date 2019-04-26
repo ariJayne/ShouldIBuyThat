@@ -72,7 +72,7 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
             date = calendar.startOfDay(for: d)
         }
         
-        validateFor(what: what,cost: cost,rate: rate)
+        validateFor(textfields: whatLbl.text, howMuchLbl.text, costLbl.text)
         
        
         if let cost = cost, let c = Double(cost), let rate = rate, let r = Double(rate)
@@ -108,30 +108,11 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
     
     @IBAction func addToPrioritizeClicked(_ sender: UIButton) {
         
-        validateFor(what: whatLbl.text, cost: costLbl.text, rate: howMuchLbl.text)
+        validateFor(textfields: whatLbl.text, howMuchLbl.text, costLbl.text)
         performSegue(withIdentifier: "toPrioritizeViewController", sender: self)
         
     }
-    
-    
-   func validateFor(what: String?, cost: String?, rate: String?) {
-    if let what = what, let cost = cost, let rate = rate
-    {
-        if what.isEmpty || cost.isEmpty || rate.isEmpty
-            {
-                let myAlert = UIAlertController(title: "Alert", message: "All fields required", preferredStyle: UIAlertController.Style.alert)
-            
-                let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil )
-            
-                myAlert.addAction(okAction)
-                self.present(myAlert, animated: true)
-                return
-            }
-        }
-    }
-    
-    
-    
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
         if segue.identifier == "toDatePopupviewController"
         {
@@ -145,10 +126,11 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
             prioritizeVC.name = whatLbl.text ?? ""
             prioritizeVC.payRate = howMuchLbl.text ?? ""
             prioritizeVC.price = costLbl.text ?? ""
+            
         }
     }
     
-    func popupWheneverSelected(value: String) {
+    func popupWheneverSelected(value: String) { //delegate functions
         whenever = value
         selected = false
     }
@@ -160,6 +142,8 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
    
 }// end class
 
-
+extension ViewController {
+    
+}
 
 

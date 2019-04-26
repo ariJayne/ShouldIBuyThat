@@ -35,7 +35,7 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
         let cost = costLbl.text!
         let rate = rateLbl.text!
         
-        validateFor(what: item,cost: cost,rate: rate)
+        validateFor(textfields: cost, rate, item)
         
     }
     
@@ -49,18 +49,7 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
         return true
     }
         
-    func validateFor(what: String, cost: String, rate: String) {
-        if (what.isEmpty || cost.isEmpty || rate.isEmpty)
-        {
-            var myAlert = UIAlertController(title: "Alert", message: "All fields required", preferredStyle: UIAlertController.Style.alert)
-                
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil )
-                
-            myAlert.addAction(okAction)
-            self.present(myAlert, animated: true)
-            return
-        }
-    }
+    
         
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user

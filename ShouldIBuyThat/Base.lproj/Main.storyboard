@@ -379,6 +379,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Prioritize" id="fax-uw-bUL"/>
                     <connections>
+                        <outlet property="addBtn" destination="miN-08-p6E" id="vsN-Um-Gfo"/>
                         <outlet property="costLbl" destination="C7q-6P-rDc" id="jUb-NO-ZmK"/>
                         <outlet property="itemLbl" destination="jgz-6Z-eVS" id="U6n-iY-y1l"/>
                         <outlet property="priorityLbl" destination="vEc-qc-RDd" id="1FU-rk-jIb"/>
@@ -492,7 +493,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eHA-nl-Xrp"/>
+        <segue reference="pBU-wC-vSB"/>
         <segue reference="tcf-W4-Hy9"/>
     </inferredMetricsTieBreakers>
 </document>

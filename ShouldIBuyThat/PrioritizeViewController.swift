@@ -8,17 +8,19 @@
 
 import UIKit
 
-class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
+class PrioritizeViewController: UIViewController, PopupDelegate {
     
     @IBOutlet weak var itemLbl: UITextField!
     @IBOutlet weak var costLbl: UITextField!
     @IBOutlet weak var rateLbl: UITextField!
     @IBOutlet weak var priorityLbl: UILabel!
     @IBOutlet weak var prioritySlider: UISlider!
+    @IBOutlet weak var addBtn: UIButton!
     
     var name = String()
     var price = String()
     var payRate = String()
+    //var popupDelegate: PopupDelegate?
     
     var date: Date?
     var whenever: String = ""
@@ -39,19 +41,6 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
         
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = "" // clear texfield when user taps
-    }
-    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // func to close the keyboard when return is selected
-        textField.resignFirstResponder()
-        return true
-    }
-        
-    
-        
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
         let popup = segue.destination as! DatePopupViewController // destination is the VC the segue is going TO
         popup.delegate = self
@@ -66,3 +55,19 @@ class PrioritizeViewController: UIViewController, PopupDelegate, UITextFieldDele
     }
     
 }// end class
+
+
+extension DatePopupViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        addBtn.isHidden = true
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // func to close the keyboard when return is selected
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, PopupDelegate {
     
     @IBOutlet weak var howManyHrsLbl: UILabel!
     @IBOutlet weak var whatLbl: UITextField!
@@ -37,16 +37,7 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))) // allows user to tap outside of keyboard to close it (for the decimal keyboards)
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
-        addBtn.isHidden = true
-    }
    
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // func to close the keyboard when return is selected
-        textField.resignFirstResponder()
-        return true
-    }
     
  
     @IBAction func findOutClicked(_ sender: UIButton) {
@@ -142,8 +133,19 @@ class ViewController: UIViewController, PopupDelegate, UITextFieldDelegate {
    
 }// end class
 
-extension ViewController {
+
+
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        addBtn.isHidden = true
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { // func to close the keyboard when return is selected
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
-
-

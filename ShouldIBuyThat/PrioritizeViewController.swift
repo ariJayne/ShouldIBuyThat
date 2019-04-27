@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PrioritizeViewController: UIViewController, PopupDelegate {
+class PrioritizeViewController: UIViewController {
     
     @IBOutlet weak var itemLbl: UITextField!
     @IBOutlet weak var costLbl: UITextField!
@@ -23,9 +23,11 @@ class PrioritizeViewController: UIViewController, PopupDelegate {
     var priorityValue: String = "med"
     var popupValueSelected: String = ""
     var selected: Bool = false
-    //var popupDelegate: PopupDelegate?
+    var textfieldsValidated = false
+    var datePopupValidated = false
     
-    var date: Date?
+    var currentDate = Date()
+    var selectedDate = Date()
     var whenever: String = ""
     
     @IBAction func sliderChanged(_ sender: UISlider) {
@@ -46,7 +48,6 @@ class PrioritizeViewController: UIViewController, PopupDelegate {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,12 +57,21 @@ class PrioritizeViewController: UIViewController, PopupDelegate {
         costLbl.text = cost
         rateLbl.text = rate
     }
+   
     
     @IBAction func addToListClicked(_ sender: UIButton) {
-      
-        validateFor(dateValue: date, wheneverValue: whenever)
-        print(priorityValue)
-       validateFor(textfields: name, cost, rate)
+    let setDates = setDatesFor(currentDate: currentDate, selectedDate: selectedDate)
+    textfieldsValidated = validateFor(textfields: name, cost, rate)
+    datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: whenever, currentDate: setDates.current)
+        
+    if datePopupValidated == true && textfieldsValidated == true
+    {
+        addBtn.isEnabled = true
+    } else {
+        addBtn.isEnabled = false
+    }
+        
+       print("cool")
         
     }
     
@@ -72,30 +82,29 @@ class PrioritizeViewController: UIViewController, PopupDelegate {
             popup.delegate = self
         }
     }
-    
+
+}// end class
+
+
+extension PrioritizeViewController: PopupDelegate {
     func popupWheneverSelected(value: String) { //delegate functions
         whenever = value
         selected = false
+        
     }
     func popupDoneSelected(value: Date) {
-        date = value
+        selectedDate = value
         selected = true
+        
     }
-   
-    
-}// end class
-
-//extension DatePopupViewController: PopupDelegate {
-   
-    
-//}
+}
 
 
-extension DatePopupViewController: UITextFieldDelegate {
+extension PrioritizeViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
-      //  addBtn.isHidden = true FIX THIS IDK WWHATS WRONG
+        addBtn.isEnabled = false
     }
     
     

@@ -107,7 +107,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                         </variation>
                                         <connections>
-                                            <segue destination="dRm-RA-dlz" kind="presentation" identifier="toDatePopupViewController" id="eHA-nl-Xrp"/>
+                                            <segue destination="dRm-RA-dlz" kind="presentation" identifier="toDatePopupViewController" id="mCf-Nc-GqZ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -153,7 +153,6 @@
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
                                         </variation>
                                         <connections>
-                                            <action selector="addToPrioritizeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1he-Uf-8dV"/>
                                             <segue destination="4te-Cu-BOy" kind="push" identifier="toPrioritizeViewController" id="7Lx-qR-h1P"/>
                                         </connections>
                                     </button>
@@ -528,7 +527,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pBU-wC-vSB"/>
+        <segue reference="mCf-Nc-GqZ"/>
         <segue reference="7Lx-qR-h1P"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,18 +15,9 @@ class DatePopupViewController: UIViewController {
     @IBOutlet weak var wheneverBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
    
-    var whenever: String = "whenever" // to be passed back to show whenever was clicked
+    var whenever: String = "" // to be passed back to show whenever was clicked
     var delegate: PopupDelegate?
     
-    
-    // create property to format date
-    // read only / computed
-   /* var formattedDate: String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        return formatter.string(from: datePicker.date)
-    }
-    */
     
     
     override func viewDidLoad() {
@@ -35,6 +26,7 @@ class DatePopupViewController: UIViewController {
     }
     
     @IBAction func wheneverBtnClicked(_ sender: UIButton) {
+        whenever = "whenever"
         delegate?.popupWheneverSelected(value: whenever)
         dismiss(animated: true)
     }

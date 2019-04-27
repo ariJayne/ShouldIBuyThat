@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     
-    func validateFor(textfields: String?...) {
+    func validateFor(textfields: String?...) -> Bool {
         for textfield in textfields {
             if let textfield = textfield
             {
@@ -23,9 +23,26 @@ extension UIViewController {
                     
                     myAlert.addAction(okAction)
                     self.present(myAlert, animated: true)
-                    return
+                    return false
                 }
             }
         }
+        return true
     }// end func
-}
+    
+    func validateFor(dateValue: Date, wheneverValue: String, currentDate: Date) -> Bool {
+        if dateValue == currentDate && wheneverValue == ""
+        {
+            let myAlert = UIAlertController(title: "Alert", message: "Please choose a date or select whenever", preferredStyle: UIAlertController.Style.alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil )
+            
+            myAlert.addAction(okAction)
+            self.present(myAlert, animated: true)
+            return false // not valid
+            
+        }
+        return true // return validated
+    }
+    
+}// end extension

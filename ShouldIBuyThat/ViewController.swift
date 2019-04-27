@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, PopupDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var howManyHrsLbl: UILabel!
     @IBOutlet weak var whatLbl: UITextField!
@@ -50,9 +50,7 @@ class ViewController: UIViewController, PopupDelegate {
             if hours exceed 24 per day, say not possible
             if hours exceed 12 per day, set a warning
          */
-        let what = whatLbl.text
-        let cost = costLbl.text
-        let rate = howMuchLbl.text
+       
         
         var currentDate = Date()
         let calendar = Calendar(identifier: .gregorian) // use to set times of each date for easy comparison
@@ -66,7 +64,7 @@ class ViewController: UIViewController, PopupDelegate {
         validateFor(textfields: whatLbl.text, howMuchLbl.text, costLbl.text)
         
        
-        if let cost = cost, let c = Double(cost), let rate = rate, let r = Double(rate)
+        if let cost = costLbl.text, let c = Double(cost), let rate = howMuchLbl.text, let r = Double(rate)
         {
             let hoursNeeded = c / r
         
@@ -99,8 +97,6 @@ class ViewController: UIViewController, PopupDelegate {
     
     @IBAction func addToPrioritizeClicked(_ sender: UIButton) {
         
-        validateFor(textfields: whatLbl.text, howMuchLbl.text, costLbl.text)
-        performSegue(withIdentifier: "toPrioritizeViewController", sender: self)
         
     }
  
@@ -111,16 +107,23 @@ class ViewController: UIViewController, PopupDelegate {
             popup.delegate = self
             
         } else if segue.identifier == "toPrioritizeViewController"
-        {
+            {
+            
             let prioritizeVC = segue.destination as! PrioritizeViewController
-            
+            print("segue successfully performed")
             prioritizeVC.name = whatLbl.text ?? ""
-            prioritizeVC.payRate = howMuchLbl.text ?? ""
-            prioritizeVC.price = costLbl.text ?? ""
-            
-        }
+            prioritizeVC.rate = howMuchLbl.text ?? ""
+            prioritizeVC.cost = costLbl.text ?? ""
+            }
     }
     
+    
+    
+}// end class
+
+
+
+extension ViewController: PopupDelegate {
     func popupWheneverSelected(value: String) { //delegate functions
         whenever = value
         selected = false
@@ -130,9 +133,7 @@ class ViewController: UIViewController, PopupDelegate {
         selected = true
     }
     
-   
-}// end class
-
+}
 
 
 extension ViewController: UITextFieldDelegate {
@@ -141,7 +142,6 @@ extension ViewController: UITextFieldDelegate {
         textField.text = ""
         addBtn.isHidden = true
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { // func to close the keyboard when return is selected
         textField.resignFirstResponder()

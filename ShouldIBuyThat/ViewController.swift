@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let tabBarVC = self.tabBarController as! ItemTabBarController
         myItems = tabBarVC.myItems
-
+        
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))) // allows user to tap outside of keyboard to close it (for the decimal keyboards)
     }
     
@@ -45,9 +45,16 @@ class ViewController: UIViewController {
             myItems.item = whatLbl.text!
             myItems.price = Double(costLbl.text!)!
             myItems.rate = Double(rateLbl.text!)!
+            myItems.currentDate = setDates.current
+            myItems.selectedDate = setDates.selected
             
-            displayLbl.text = myItems.getHoursNeededWith(setDates.current, setDates.selected)
+            
+            displayLbl.text = myItems.getHoursNeededWith()
+            
             addBtn.isHidden = false
+            addBtn.setTitle("Prioritize!", for: .normal)
+            addBtn.backgroundColor = .red
+            addBtn.setTitleColor(.white, for: .normal)
         } else {
             print("not valid")
             addBtn.isHidden = true
@@ -62,8 +69,9 @@ class ViewController: UIViewController {
         myItems.price = Double(costLbl.text!)!
         myItems.rate = Double(rateLbl.text!)!
         
-        addBtn.setTitle("Successfully added to Priorities!", for: .normal)
+        addBtn.setTitle("Added to Prioritize", for: .normal)
         addBtn.backgroundColor = .green
+        addBtn.setTitleColor(.darkGray, for: .normal)
     }
     
    
@@ -100,6 +108,7 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
+        addBtn.backgroundColor = .red
         addBtn.isHidden = true
     }
     

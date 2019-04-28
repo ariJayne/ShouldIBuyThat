@@ -26,10 +26,8 @@ class ItemModel: NSObject { // to be shared between both view controllers
         return nf
     }()
     
-    func getHoursNeededWith(_ currentDate: Date, _ selectedDate: Date) -> String {
+    func getHoursNeededWith() -> String {
         let hoursNeeded = price / rate
-        
-        print(hoursNeeded)
         if selected == true
         {
             let components = Calendar.current.dateComponents([.day], from: currentDate, to: selectedDate)

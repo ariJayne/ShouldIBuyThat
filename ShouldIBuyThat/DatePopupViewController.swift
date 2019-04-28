@@ -17,12 +17,12 @@ class DatePopupViewController: UIViewController {
    
     var whenever: String = "" // to be passed back to show whenever was clicked
     var delegate: PopupDelegate?
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+        datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: 10, to: Date())
     }
     
     @IBAction func wheneverBtnClicked(_ sender: UIButton) {

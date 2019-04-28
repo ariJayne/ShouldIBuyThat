@@ -17,13 +17,14 @@ class PrioritizeViewController: UIViewController {
     @IBOutlet weak var priorityLbl: UILabel!
     @IBOutlet weak var prioritySlider: UISlider!
     @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var whenBtn: UIButton!
     
+    var selectedDate = Date()
     var priorityValue = "med"
     var textfieldsValidated = false
     var datePopupValidated = false
+    var setDates = (current: Date(), selected: Date())
 
-    
-    
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(prioritySlider.value)), animated: true)
         switch sender.value {
@@ -46,6 +47,16 @@ class PrioritizeViewController: UIViewController {
         itemLbl.text = myItems.item
         costLbl.text = String(myItems.price)
         rateLbl.text = String(myItems.rate)
+        setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+
+        if myItems.addToPrioritize == true && myItems.selected == true
+        {
+            whenBtn.setTitle("\(formatDate(myItems.selectedDate)) is chosen, click to change", for: .normal)
+        }
+        else if myItems.addToPrioritize == true && myItems.selected == false
+        {
+            whenBtn.setTitle("Whenever is chosen, click to change", for: .normal)
+        }
     }
     
     override func viewDidLoad() {
@@ -58,8 +69,7 @@ class PrioritizeViewController: UIViewController {
    
     
     @IBAction func addToListClicked(_ sender: UIButton) {
-    let setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
-        
+    
     textfieldsValidated = validateFor(textfields: itemLbl.text, costLbl.text, rateLbl.text)
     datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: myItems.whenever, currentDate: setDates.current)
         
@@ -86,12 +96,12 @@ extension PrioritizeViewController: PopupDelegate {
     func popupWheneverSelected(value: String) { //delegate functions
         myItems.whenever = value
         myItems.selected = false
-        
+        whenBtn.setTitle("Whenever selected, click to change", for: .normal)
     }
     func popupDoneSelected(value: Date) {
         myItems.selectedDate = value
         myItems.selected = true
-        
+        whenBtn.setTitle("\(formatDate(myItems.selectedDate)) is chosen, click to change", for: .normal)
     }
 }
 

@@ -17,6 +17,8 @@ class ItemModel: NSObject { // to be shared between both view controllers
     var currentDate = Date()
     var selectedDate = Date()
     var whenever = ""
+    
+    var addToPrioritize = false
 
     let numberFormatter: NumberFormatter = { // format for decimal places
         let nf = NumberFormatter()
@@ -26,7 +28,7 @@ class ItemModel: NSObject { // to be shared between both view controllers
         return nf
     }()
     
-    func getHoursNeededWith() -> String {
+    func getHoursNeeded() -> String {
         let hoursNeeded = price / rate
         if selected == true
         {

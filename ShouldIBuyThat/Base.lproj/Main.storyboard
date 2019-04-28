@@ -401,6 +401,7 @@
                         <outlet property="priorityLbl" destination="vEc-qc-RDd" id="1FU-rk-jIb"/>
                         <outlet property="prioritySlider" destination="KKG-Cm-zFi" id="uoL-JP-SZN"/>
                         <outlet property="rateLbl" destination="nOn-mJ-0Lg" id="hpM-2D-mDJ"/>
+                        <outlet property="whenBtn" destination="pH5-zV-hFQ" id="v4J-b7-fSt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CN-Hr-fGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -512,6 +513,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mCf-Nc-GqZ"/>
+        <segue reference="pBU-wC-vSB"/>
     </inferredMetricsTieBreakers>
 </document>

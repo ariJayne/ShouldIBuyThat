@@ -37,31 +37,34 @@ class ViewController: UIViewController {
     @IBAction func findOutClicked(_ sender: UIButton) {
         
         let setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
-       
+
         textfieldsValidated = validateFor(textfields: whatLbl.text, rateLbl.text, costLbl.text)
+        
         datePopupValidated = validateFor(dateValue: setDates.current, wheneverValue: myItems.whenever, currentDate: setDates.selected)
         
-        if datePopupValidated == true && textfieldsValidated == true {
+        if datePopupValidated == true && textfieldsValidated == true
+        {
             myItems.item = whatLbl.text!
             myItems.price = Double(costLbl.text!)!
             myItems.rate = Double(rateLbl.text!)!
             myItems.currentDate = setDates.current
             myItems.selectedDate = setDates.selected
-            
-            
-            displayLbl.text = myItems.getHoursNeededWith()
+         
+            displayLbl.text = myItems.getHoursNeeded()
             
             addBtn.isHidden = false
             addBtn.setTitle("Prioritize!", for: .normal)
             addBtn.backgroundColor = .red
             addBtn.setTitleColor(.white, for: .normal)
-        } else {
+        }
+        else
+        {
             print("not valid")
             addBtn.isHidden = true
         }
         
         
-      
+      myItems.addToPrioritize = false
     }// end findOutClicked function
     
     @IBAction func addToListClicked(_ sender: UIButton) {
@@ -72,10 +75,11 @@ class ViewController: UIViewController {
         addBtn.setTitle("Added to Prioritize", for: .normal)
         addBtn.backgroundColor = .green
         addBtn.setTitleColor(.darkGray, for: .normal)
+        
+        myItems.addToPrioritize = true
     }
     
    
- 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
         if segue.identifier == "toDatePopupViewController"
         {
@@ -94,13 +98,17 @@ extension ViewController: PopupDelegate {
     func popupWheneverSelected(value: String) { //delegate functions
         myItems.whenever = value
         myItems.selected = false
+        whenBtn.setTitle("Whenever selected, click to change", for: .normal)
+        myItems.addToPrioritize = false
     }
     
     func popupDoneSelected(value: Date) {
         myItems.selectedDate = value
         myItems.selected = true
+        addBtn.isHidden = true
+         whenBtn.setTitle("\(formatDate(myItems.selectedDate)) selected, click to change", for: .normal)
+        myItems.addToPrioritize = false
     }
-    
 }
 
 

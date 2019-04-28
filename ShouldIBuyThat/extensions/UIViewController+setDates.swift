@@ -23,7 +23,12 @@ extension UIViewController {
         return (currentDate, selectedDate)
         
     }
-        
+    
+    func formatDate(_ date: Date) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "MMM dd, yyyy"
+        return df.string(from: date)
+    }
 }// end extension
 
 

@@ -209,7 +209,7 @@
                         <outlet property="costLbl" destination="Mfk-Bh-Ypc" id="PYa-VY-fw3"/>
                         <outlet property="displayLbl" destination="qib-h3-P2k" id="KYn-xT-yfB"/>
                         <outlet property="howManyHrsLbl" destination="WnL-qI-SGc" id="DGM-RQ-iVE"/>
-                        <outlet property="howMuchLbl" destination="z1a-Wg-qPB" id="GJw-eH-niH"/>
+                        <outlet property="rateLbl" destination="z1a-Wg-qPB" id="GJw-eH-niH"/>
                         <outlet property="whatLbl" destination="svF-CY-2CL" id="K6X-HA-npC"/>
                         <outlet property="whenBtn" destination="GSe-IL-FIi" id="1ce-rj-TgF"/>
                     </connections>

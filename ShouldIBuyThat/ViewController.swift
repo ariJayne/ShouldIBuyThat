@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var myItems = ItemModel()
     
     @IBOutlet weak var howManyHrsLbl: UILabel!
     @IBOutlet weak var whatLbl: UITextField!
@@ -20,34 +21,50 @@ class ViewController: UIViewController {
     @IBOutlet weak var addBtn: UIButton!
     
     @IBOutlet weak var displayLbl: UILabel!
-
-    var whenever: String = ""
+    
     var datePopupValidated = false
     var textfieldsValidated = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let tabBarVC = self.tabBarController as! ItemTabBarController
+        myItems = tabBarVC.myItems
+
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))) // allows user to tap outside of keyboard to close it (for the decimal keyboards)
     }
     
     @IBAction func findOutClicked(_ sender: UIButton) {
         
-        let setDates = setDatesFor(currentDate: currentDate, selectedDate: selectedDate)
+        let setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
        
         textfieldsValidated = validateFor(textfields: whatLbl.text, rateLbl.text, costLbl.text)
-        datePopupValidated = validateFor(dateValue: setDates.current, wheneverValue: whenever, currentDate: setDates.selected)
+        datePopupValidated = validateFor(dateValue: setDates.current, wheneverValue: myItems.whenever, currentDate: setDates.selected)
         
         if datePopupValidated == true && textfieldsValidated == true {
+            myItems.item = whatLbl.text!
+            myItems.price = Double(costLbl.text!)!
+            myItems.rate = Double(rateLbl.text!)!
+            
+            displayLbl.text = myItems.getHoursNeededWith(setDates.current, setDates.selected)
             addBtn.isHidden = false
         } else {
+            print("not valid")
             addBtn.isHidden = true
         }
-   
-       
         
+        
+      
     }// end findOutClicked function
+    
+    @IBAction func addToListClicked(_ sender: UIButton) {
+        myItems.item = whatLbl.text!
+        myItems.price = Double(costLbl.text!)!
+        myItems.rate = Double(rateLbl.text!)!
+        
+        addBtn.setTitle("Successfully added to Priorities!", for: .normal)
+        addBtn.backgroundColor = .green
+    }
     
    
  
@@ -67,13 +84,13 @@ class ViewController: UIViewController {
 extension ViewController: PopupDelegate {
     
     func popupWheneverSelected(value: String) { //delegate functions
-        whenever = value
-        selected = false
+        myItems.whenever = value
+        myItems.selected = false
     }
     
     func popupDoneSelected(value: Date) {
-        selectedDate = value
-        selected = true
+        myItems.selectedDate = value
+        myItems.selected = true
     }
     
 }

@@ -17,6 +17,7 @@
 		D283E77322690F0F007C3FC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D283E77222690F0F007C3FC8 /* Assets.xcassets */; };
 		D283E77622690F0F007C3FC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D283E77422690F0F007C3FC8 /* LaunchScreen.storyboard */; };
 		D2A6605B22761C14006C9A40 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6605A22761C14006C9A40 /* ItemModel.swift */; };
+		D2A6605D22761C14006C9A40 /* ItemTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A6605C22761C14006C9A40 /* ItemTabBarController.swift */; };
 		D2BCF5912274D4FC00CF65B5 /* UIViewController+setDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BCF5902274D4FC00CF65B5 /* UIViewController+setDates.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		D283E77522690F0F007C3FC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D283E77722690F0F007C3FC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A6605A22761C14006C9A40 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		D2A6605C22761C14006C9A40 /* ItemTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTabBarController.swift; sourceTree = "<group>"; };
 		D2BCF5902274D4FC00CF65B5 /* UIViewController+setDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+setDates.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,13 +78,14 @@
 			isa = PBXGroup;
 			children = (
 				D283E76B22690F0D007C3FC8 /* AppDelegate.swift */,
-				D283E76D22690F0D007C3FC8 /* ViewController.swift */,
+				D2A6605C22761C14006C9A40 /* ItemTabBarController.swift */,
 				D2A6605A22761C14006C9A40 /* ItemModel.swift */,
+				D283E76D22690F0D007C3FC8 /* ViewController.swift */,
 				D2131747226E938700FCF1EA /* PrioritizeViewController.swift */,
 				D2131745226E88E300FCF1EA /* DatePopupViewController.swift */,
+				D24A5CCA2272896E009C3933 /* extensions */,
 				D2131749226EA4A900FCF1EA /* PopupDelegate.swift */,
 				D283E76F22690F0D007C3FC8 /* Main.storyboard */,
-				D24A5CCA2272896E009C3933 /* extensions */,
 				D283E77222690F0F007C3FC8 /* Assets.xcassets */,
 				D283E77422690F0F007C3FC8 /* LaunchScreen.storyboard */,
 				D283E77722690F0F007C3FC8 /* Info.plist */,
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A6605D22761C14006C9A40 /* ItemTabBarController.swift in Sources */,
 				D283E76E22690F0D007C3FC8 /* ViewController.swift in Sources */,
 				D2131748226E938700FCF1EA /* PrioritizeViewController.swift in Sources */,
 				D2A6605B22761C14006C9A40 /* ItemModel.swift in Sources */,

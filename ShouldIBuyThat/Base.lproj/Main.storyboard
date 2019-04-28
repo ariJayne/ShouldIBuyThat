@@ -152,6 +152,9 @@
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="addToListClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j0C-FZ-pAz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -486,10 +489,10 @@
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="152.47376311844079"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Item Tab Bar Controller-->
         <scene sceneID="tqJ-JT-YjC">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="aUI-z6-Vyq" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="aUI-z6-Vyq" customClass="ItemTabBarController" customModule="ShouldIBuyThat" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Ov-I6-gw7">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

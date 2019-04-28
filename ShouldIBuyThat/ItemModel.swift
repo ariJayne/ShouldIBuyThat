@@ -8,14 +8,16 @@
 
 import UIKit
 
-class ItemModel: NSObject {
+class ItemModel: NSObject { // to be shared between both view controllers
     var item = ""
     var price = 0.0
     var rate = 0.0
     var selected = false
+   
     var currentDate = Date()
     var selectedDate = Date()
-    
+    var whenever = ""
+
     let numberFormatter: NumberFormatter = { // format for decimal places
         let nf = NumberFormatter()
         nf.numberStyle = .decimal
@@ -24,9 +26,10 @@ class ItemModel: NSObject {
         return nf
     }()
     
-    func getHoursNeeded(with currentDate: Date, _ selectedDate: Date) -> String {
+    func getHoursNeededWith(_ currentDate: Date, _ selectedDate: Date) -> String {
         let hoursNeeded = price / rate
         
+        print(hoursNeeded)
         if selected == true
         {
             let components = Calendar.current.dateComponents([.day], from: currentDate, to: selectedDate)
@@ -35,7 +38,7 @@ class ItemModel: NSObject {
                 let hoursPerDay = hoursNeeded / Double(days)
                 if let hoursPerDay = numberFormatter.string(from: NSNumber(value: hoursPerDay))
                 {
-                    return "\(hoursPerDay) per day for \(days) days"
+                    return "\(hoursPerDay) hours per day for \(days) day(s)"
                 }
             }
         }

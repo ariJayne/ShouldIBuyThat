@@ -9,6 +9,7 @@
 import UIKit
 
 class PrioritizeViewController: UIViewController {
+    var myItems = ItemModel()
     
     @IBOutlet weak var itemLbl: UITextField!
     @IBOutlet weak var costLbl: UITextField!
@@ -18,14 +19,10 @@ class PrioritizeViewController: UIViewController {
     @IBOutlet weak var addBtn: UIButton!
     
     var priorityValue = "med"
-    var popupValueSelected = ""
-    var selected = false
     var textfieldsValidated = false
     var datePopupValidated = false
+
     
-    var currentDate = Date()
-    var selectedDate = Date()
-    var whenever = ""
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(prioritySlider.value)), animated: true)
@@ -45,19 +42,26 @@ class PrioritizeViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        itemLbl.text = myItems.item
+        costLbl.text = String(myItems.price)
+        rateLbl.text = String(myItems.rate)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tabBarVC = self.tabBarController as! ItemTabBarController
+        myItems = tabBarVC.myItems
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))) // allows user to tap outside of keyboard to close it (for the decimal keyboards)
-        
     }
    
     
     @IBAction func addToListClicked(_ sender: UIButton) {
-    let setDates = setDatesFor(currentDate: currentDate, selectedDate: selectedDate)
+    let setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
         
     textfieldsValidated = validateFor(textfields: itemLbl.text, costLbl.text, rateLbl.text)
-    datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: whenever, currentDate: setDates.current)
+    datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: myItems.whenever, currentDate: setDates.current)
         
     if datePopupValidated == true && textfieldsValidated == true
     {
@@ -80,13 +84,13 @@ class PrioritizeViewController: UIViewController {
 
 extension PrioritizeViewController: PopupDelegate {
     func popupWheneverSelected(value: String) { //delegate functions
-        whenever = value
-        selected = false
+        myItems.whenever = value
+        myItems.selected = false
         
     }
     func popupDoneSelected(value: Date) {
-        selectedDate = value
-        selected = true
+        myItems.selectedDate = value
+        myItems.selected = true
         
     }
 }

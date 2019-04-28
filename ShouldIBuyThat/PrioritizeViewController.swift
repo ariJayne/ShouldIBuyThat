@@ -17,18 +17,15 @@ class PrioritizeViewController: UIViewController {
     @IBOutlet weak var prioritySlider: UISlider!
     @IBOutlet weak var addBtn: UIButton!
     
-    var name: String = ""
-    var cost: String = ""
-    var rate: String = ""
-    var priorityValue: String = "med"
-    var popupValueSelected: String = ""
-    var selected: Bool = false
+    var priorityValue = "med"
+    var popupValueSelected = ""
+    var selected = false
     var textfieldsValidated = false
     var datePopupValidated = false
     
     var currentDate = Date()
     var selectedDate = Date()
-    var whenever: String = ""
+    var whenever = ""
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(prioritySlider.value)), animated: true)
@@ -53,26 +50,21 @@ class PrioritizeViewController: UIViewController {
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))) // allows user to tap outside of keyboard to close it (for the decimal keyboards)
         
-        itemLbl.text = name
-        costLbl.text = cost
-        rateLbl.text = rate
     }
    
     
     @IBAction func addToListClicked(_ sender: UIButton) {
     let setDates = setDatesFor(currentDate: currentDate, selectedDate: selectedDate)
-    textfieldsValidated = validateFor(textfields: name, cost, rate)
+        
+    textfieldsValidated = validateFor(textfields: itemLbl.text, costLbl.text, rateLbl.text)
     datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: whenever, currentDate: setDates.current)
         
     if datePopupValidated == true && textfieldsValidated == true
     {
-        addBtn.isEnabled = true
+       print("validated")
     } else {
-        addBtn.isEnabled = false
-    }
-        
-       print("cool")
-        
+        print("not Validated")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
@@ -104,7 +96,6 @@ extension PrioritizeViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
-        addBtn.isEnabled = false
     }
     
     

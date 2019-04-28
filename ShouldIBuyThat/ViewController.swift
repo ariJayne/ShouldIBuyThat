@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             addBtn.isHidden = true
         }
    
-       
+       /*
         if let cost = costLbl.text, let c = Double(cost), let rate = howMuchLbl.text, let r = Double(rate)
         {
             let hoursNeeded = c / r
@@ -94,6 +94,7 @@ class ViewController: UIViewController {
                 }
                // addBtn.isHidden = false
             }
+         */
         
     }// end findOutClicked function
     
@@ -105,15 +106,7 @@ class ViewController: UIViewController {
             let popup = segue.destination as! DatePopupViewController // destination is the VC the segue is going TO
             popup.delegate = self
             
-        } else if segue.identifier == "toPrioritizeViewController"
-            {
-            
-            let prioritizeVC = segue.destination as! PrioritizeViewController
-            print("segue successfully performed")
-            prioritizeVC.name = whatLbl.text ?? ""
-            prioritizeVC.rate = howMuchLbl.text ?? ""
-            prioritizeVC.cost = costLbl.text ?? ""
-            }
+        } 
     }
 
 }// end class

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ShouldIBuyThat" customModuleProvider="target" sceneMemberID="viewController">
@@ -152,9 +152,6 @@
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
                                         </variation>
-                                        <connections>
-                                            <segue destination="4te-Cu-BOy" kind="push" identifier="toPrioritizeViewController" id="7Lx-qR-h1P"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -204,6 +201,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" id="uvK-6E-hCm"/>
                     <navigationItem key="navigationItem" id="lbD-PK-fwe"/>
                     <connections>
                         <outlet property="addBtn" destination="b1u-NR-vKd" id="zKI-nQ-JwD"/>
@@ -499,7 +497,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="hXE-Nb-2df" kind="relationship" relationship="viewControllers" id="3hq-ph-o1c"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="5QU-Br-xG3"/>
                         <segue destination="4te-Cu-BOy" kind="relationship" relationship="viewControllers" id="k5N-Dm-N2F"/>
                     </connections>
                 </tabBarController>
@@ -507,27 +505,8 @@
             </objects>
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="2Ll-ZZ-XJY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="hXE-Nb-2df" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="upT-C3-fZT"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OsN-TY-yvc">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gGG-3d-BC4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TBa-bW-cbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1072.8" y="-257.72113943028489"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mCf-Nc-GqZ"/>
-        <segue reference="7Lx-qR-h1P"/>
     </inferredMetricsTieBreakers>
 </document>

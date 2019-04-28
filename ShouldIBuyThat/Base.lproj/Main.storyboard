@@ -296,7 +296,7 @@
                                                         <color key="backgroundColor" red="1" green="0.86274509799999999" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="4te-Cu-BOy" id="P0L-Gd-OD4"/>
                                                         </connections>
@@ -306,7 +306,7 @@
                                                         <color key="backgroundColor" red="1" green="0.86274509799999999" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="4te-Cu-BOy" id="ZCR-5L-SR5"/>
                                                         </connections>

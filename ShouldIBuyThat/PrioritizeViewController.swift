@@ -75,10 +75,13 @@ class PrioritizeViewController: UIViewController {
         
     if datePopupValidated == true && textfieldsValidated == true
     {
+        // reset all fields
        print("validated")
     } else {
         print("not Validated")
         }
+        
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user

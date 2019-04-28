@@ -56,6 +56,7 @@ class ViewController: UIViewController {
             addBtn.setTitle("Prioritize!", for: .normal)
             addBtn.backgroundColor = .red
             addBtn.setTitleColor(.white, for: .normal)
+            // reset all fields
         }
         else
         {
@@ -77,6 +78,7 @@ class ViewController: UIViewController {
         addBtn.setTitleColor(.darkGray, for: .normal)
         
         myItems.addToPrioritize = true
+        // reset all fields
     }
     
    

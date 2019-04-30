@@ -385,7 +385,7 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y5c-zL-1Vj">
                                 <rect key="frame" x="5" y="422" width="365" height="215"/>
-                                <color key="backgroundColor" red="0.73364412784576416" green="0.86057215929031372" blue="0.86284357309341431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -400,11 +400,11 @@
                                                     <rect key="frame" x="15" y="0.0" width="335" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
@@ -430,12 +430,22 @@
                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="46"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority Table (slide left to delete)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPG-dF-US8">
+                                <rect key="frame" x="5" y="404" width="189" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93872735137058338" blue="0.35694754464285716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="08W-DE-Nfq" firstAttribute="trailing" secondItem="KKG-Cm-zFi" secondAttribute="trailing" constant="10" id="4c7-d9-FMq"/>
                             <constraint firstItem="JVc-r7-XqQ" firstAttribute="top" secondItem="OwN-pZ-VmG" secondAttribute="bottom" constant="8" id="4yT-jB-q3t"/>
                             <constraint firstItem="KKG-Cm-zFi" firstAttribute="leading" secondItem="08W-DE-Nfq" secondAttribute="leading" constant="10" id="LNn-bf-FF7"/>
+                            <constraint firstItem="Y5c-zL-1Vj" firstAttribute="top" secondItem="xPG-dF-US8" secondAttribute="bottom" constant="3.5" id="MT1-2U-z5n"/>
                             <constraint firstItem="Y5c-zL-1Vj" firstAttribute="leading" secondItem="08W-DE-Nfq" secondAttribute="leading" constant="5" id="SWT-rO-sEV"/>
                             <constraint firstItem="OwN-pZ-VmG" firstAttribute="centerX" secondItem="Try-T4-Z0i" secondAttribute="centerX" id="VF8-4X-H3h"/>
                             <constraint firstItem="08W-DE-Nfq" firstAttribute="trailing" secondItem="JVc-r7-XqQ" secondAttribute="trailing" constant="5" id="ZIt-SX-Qcf"/>
@@ -444,6 +454,7 @@
                             <constraint firstItem="OwN-pZ-VmG" firstAttribute="top" secondItem="08W-DE-Nfq" secondAttribute="top" constant="10" id="ehY-Jo-Ghw"/>
                             <constraint firstItem="JVc-r7-XqQ" firstAttribute="leading" secondItem="08W-DE-Nfq" secondAttribute="leading" constant="5" id="itR-oQ-Ygd"/>
                             <constraint firstItem="KKG-Cm-zFi" firstAttribute="top" secondItem="hKK-U5-IxB" secondAttribute="bottom" constant="7.5" id="kmy-Q4-NxK"/>
+                            <constraint firstItem="xPG-dF-US8" firstAttribute="leading" secondItem="Y5c-zL-1Vj" secondAttribute="leading" id="ma6-65-v3i"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Y5c-zL-1Vj" secondAttribute="bottom" constant="-19" id="pUN-Wr-vAd"/>
                             <constraint firstItem="Y5c-zL-1Vj" firstAttribute="top" secondItem="miN-08-p6E" secondAttribute="bottom" constant="31" id="ra1-GQ-xQX"/>
                             <constraint firstItem="w0J-B5-A4u" firstAttribute="leading" secondItem="08W-DE-Nfq" secondAttribute="leading" constant="5" id="rn6-UK-iFh"/>
@@ -595,6 +606,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mCf-Nc-GqZ"/>
+        <segue reference="pBU-wC-vSB"/>
     </inferredMetricsTieBreakers>
 </document>

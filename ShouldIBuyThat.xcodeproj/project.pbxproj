@@ -11,6 +11,7 @@
 		D2131748226E938700FCF1EA /* PrioritizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131747226E938700FCF1EA /* PrioritizeViewController.swift */; };
 		D213174A226EA4A900FCF1EA /* PopupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2131749226EA4A900FCF1EA /* PopupDelegate.swift */; };
 		D24A5CC9227285AB009C3933 /* UIViewController+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A5CC8227285AB009C3933 /* UIViewController+Validation.swift */; };
+		D25F6CC02279107000B41A35 /* UIViewController+ChangePartTextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25F6CBF2279107000B41A35 /* UIViewController+ChangePartTextColor.swift */; };
 		D283E76C22690F0D007C3FC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283E76B22690F0D007C3FC8 /* AppDelegate.swift */; };
 		D283E76E22690F0D007C3FC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283E76D22690F0D007C3FC8 /* ViewController.swift */; };
 		D283E77122690F0D007C3FC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D283E76F22690F0D007C3FC8 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		D2131747226E938700FCF1EA /* PrioritizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrioritizeViewController.swift; sourceTree = "<group>"; };
 		D2131749226EA4A900FCF1EA /* PopupDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDelegate.swift; sourceTree = "<group>"; };
 		D24A5CC8227285AB009C3933 /* UIViewController+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Validation.swift"; sourceTree = "<group>"; };
+		D25F6CBF2279107000B41A35 /* UIViewController+ChangePartTextColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ChangePartTextColor.swift"; sourceTree = "<group>"; };
 		D283E76822690F0D007C3FC8 /* ShouldIBuyThat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShouldIBuyThat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D283E76B22690F0D007C3FC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D283E76D22690F0D007C3FC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				D24A5CC8227285AB009C3933 /* UIViewController+Validation.swift */,
 				D2BCF5902274D4FC00CF65B5 /* UIViewController+setDates.swift */,
+				D25F6CBF2279107000B41A35 /* UIViewController+ChangePartTextColor.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				D283E76E22690F0D007C3FC8 /* ViewController.swift in Sources */,
 				D2131748226E938700FCF1EA /* PrioritizeViewController.swift in Sources */,
 				D2A6605B22761C14006C9A40 /* ItemModel.swift in Sources */,
+				D25F6CC02279107000B41A35 /* UIViewController+ChangePartTextColor.swift in Sources */,
 				D2BCF5912274D4FC00CF65B5 /* UIViewController+setDates.swift in Sources */,
 				D283E76C22690F0D007C3FC8 /* AppDelegate.swift in Sources */,
 				D24A5CC9227285AB009C3933 /* UIViewController+Validation.swift in Sources */,

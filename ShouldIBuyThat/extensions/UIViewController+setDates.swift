@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     
-    func setDatesFor(currentDate: Date, selectedDate: Date) -> (current: Date, selected: Date) {
+    func setTimesFor(currentDate: Date, selectedDate: Date) -> (current: Date, selected: Date) {
         var currentDate = currentDate
         var selectedDate = selectedDate
         let calendar = Calendar(identifier: .gregorian)
@@ -26,7 +26,7 @@ extension UIViewController {
     
     func formatDate(_ date: Date) -> String {
         let df = DateFormatter()
-        df.dateFormat = "MMM dd, yyyy"
+        df.dateFormat = "MM/dd/yy"
         return df.string(from: date)
     }
 }// end extension

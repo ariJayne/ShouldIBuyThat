@@ -36,19 +36,19 @@ class ViewController: UIViewController {
     
     @IBAction func findOutClicked(_ sender: UIButton) {
         
-        let setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+        let setTimes = setTimesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
 
         textfieldsValidated = validateFor(textfields: whatLbl.text, rateLbl.text, costLbl.text)
         
-        datePopupValidated = validateFor(dateValue: setDates.current, wheneverValue: myItems.whenever, currentDate: setDates.selected)
+        datePopupValidated = validateFor(dateValue: setTimes.current, wheneverValue: myItems.whenever, currentDate: setTimes.selected)
         
         if datePopupValidated == true && textfieldsValidated == true
         {
             myItems.item = whatLbl.text!
             myItems.price = Double(costLbl.text!)!
             myItems.rate = Double(rateLbl.text!)!
-            myItems.currentDate = setDates.current
-            myItems.selectedDate = setDates.selected
+            myItems.currentDate = setTimes.current
+            myItems.selectedDate = setTimes.selected
          
             displayLbl.text = myItems.getHoursNeeded()
             

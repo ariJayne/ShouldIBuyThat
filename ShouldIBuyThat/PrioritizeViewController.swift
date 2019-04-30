@@ -11,14 +11,6 @@ import UIKit
 class PrioritizeViewController: UIViewController {
     var myItems = ItemModel()
     
-    
-    @IBOutlet weak var outerMost: UIStackView!
-    @IBOutlet weak var middle: UIStackView!
-    
-    
-    
-    
-    
     @IBOutlet weak var itemLbl: UITextField!
     @IBOutlet weak var costLbl: UITextField!
     @IBOutlet weak var rateLbl: UITextField!
@@ -32,7 +24,10 @@ class PrioritizeViewController: UIViewController {
     var priorityValue = "med"
     var textfieldsValidated = false
     var datePopupValidated = false
-    var setDates = (current: Date(), selected: Date())
+    var setTimes = (current: Date(), selected: Date())
+    
+    var priorityItems: [String] = []
+    
 
     @IBAction func sliderChanged(_ sender: UISlider) {
         sender.setValue(Float(lroundf(prioritySlider.value)), animated: true)
@@ -52,12 +47,10 @@ class PrioritizeViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-
+    override func viewWillAppear(_ animated: Bool) { // use to fill labels with values if sent from main VC
         if myItems.addToPrioritize == true && myItems.selected == true
         {
-            setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+            setTimes = setTimesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
             itemLbl.text = myItems.item
             costLbl.text = String(myItems.price)
             rateLbl.text = String(myItems.rate)
@@ -65,7 +58,7 @@ class PrioritizeViewController: UIViewController {
         }
         else if myItems.addToPrioritize == true && myItems.selected == false
         {
-            setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+            setTimes = setTimesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
             itemLbl.text = myItems.item
             costLbl.text = String(myItems.price)
             rateLbl.text = String(myItems.rate)
@@ -78,23 +71,44 @@ class PrioritizeViewController: UIViewController {
         let tabBarVC = self.tabBarController as! ItemTabBarController
         myItems = tabBarVC.myItems
         
+        itemsTableView.tableFooterView = UIView(frame: CGRect.zero)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))) // allows user to tap outside of keyboard to close it (for the decimal keyboards)
     }
    
     
     @IBAction func addToListClicked(_ sender: UIButton) {
-        setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+        setTimes = setTimesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
         textfieldsValidated = validateFor(textfields: itemLbl.text, costLbl.text, rateLbl.text)
-        datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: myItems.whenever, currentDate: setDates.current)
+        datePopupValidated = validateFor(dateValue: setTimes.selected, wheneverValue: myItems.whenever, currentDate: setTimes.current)
         
         if datePopupValidated == true && textfieldsValidated == true
         {
-            print("validated")
+            myItems.item = itemLbl.text!
+            myItems.price = Double(costLbl.text!)!
+            myItems.rate = Double(rateLbl.text!)!
+            myItems.currentDate = setTimes.current
+            myItems.selectedDate = setTimes.selected
+
+            insertNewPriority()
         }
         else
         {
-            print("not Validated")
+            print("not Validated") // reset all fields
         }
+    }
+    
+    func insertNewPriority() {
+       
+        
+        let rowTitle = "P: \(priorityValue) - \(myItems.item) - by: \(formatDate(myItems.selectedDate))"
+        priorityItems.append(rowTitle) // append new item to array that will hold values in table
+        
+        let indexPath = IndexPath(row: priorityItems.count - 1, section: 0) // add the new value to end of table
+        itemsTableView.beginUpdates()
+        itemsTableView.insertRows(at: [indexPath], with: .automatic)
+        itemsTableView.endUpdates()
+        
+        // clear all textfields
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
@@ -138,13 +152,32 @@ extension PrioritizeViewController: UITextFieldDelegate {
 
 extension PrioritizeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "" // change to data that will be passed
+        
+        let priorityTitle = priorityItems[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = priorityTitle // change to data that will be passed
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 // change to amount of data to be passed
+        return priorityItems.count // change to amount of data to be passed
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true // gives ability to edit rows
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            priorityItems.remove(at: indexPath.row) // remove item from array
+            
+            itemsTableView.beginUpdates()
+            itemsTableView.deleteRows(at: [indexPath], with: .automatic) // delete row from table
+            itemsTableView.endUpdates()
+        }
     }
     
 }

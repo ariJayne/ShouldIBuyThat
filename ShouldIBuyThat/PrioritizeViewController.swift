@@ -11,6 +11,14 @@ import UIKit
 class PrioritizeViewController: UIViewController {
     var myItems = ItemModel()
     
+    
+    @IBOutlet weak var outerMost: UIStackView!
+    @IBOutlet weak var middle: UIStackView!
+    
+    
+    
+    
+    
     @IBOutlet weak var itemLbl: UITextField!
     @IBOutlet weak var costLbl: UITextField!
     @IBOutlet weak var rateLbl: UITextField!
@@ -18,6 +26,7 @@ class PrioritizeViewController: UIViewController {
     @IBOutlet weak var prioritySlider: UISlider!
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var whenBtn: UIButton!
+    @IBOutlet weak var itemsTableView: UITableView!
     
     var selectedDate = Date()
     var priorityValue = "med"
@@ -44,17 +53,22 @@ class PrioritizeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        itemLbl.text = myItems.item
-        costLbl.text = String(myItems.price)
-        rateLbl.text = String(myItems.rate)
-        setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+        
 
         if myItems.addToPrioritize == true && myItems.selected == true
         {
+            setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+            itemLbl.text = myItems.item
+            costLbl.text = String(myItems.price)
+            rateLbl.text = String(myItems.rate)
             whenBtn.setTitle("\(formatDate(myItems.selectedDate)) is chosen, click to change", for: .normal)
         }
         else if myItems.addToPrioritize == true && myItems.selected == false
         {
+            setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+            itemLbl.text = myItems.item
+            costLbl.text = String(myItems.price)
+            rateLbl.text = String(myItems.rate)
             whenBtn.setTitle("Whenever is chosen, click to change", for: .normal)
         }
     }
@@ -69,19 +83,18 @@ class PrioritizeViewController: UIViewController {
    
     
     @IBAction func addToListClicked(_ sender: UIButton) {
-    
-    textfieldsValidated = validateFor(textfields: itemLbl.text, costLbl.text, rateLbl.text)
-    datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: myItems.whenever, currentDate: setDates.current)
+        setDates = setDatesFor(currentDate: myItems.currentDate, selectedDate: myItems.selectedDate)
+        textfieldsValidated = validateFor(textfields: itemLbl.text, costLbl.text, rateLbl.text)
+        datePopupValidated = validateFor(dateValue: setDates.selected, wheneverValue: myItems.whenever, currentDate: setDates.current)
         
-    if datePopupValidated == true && textfieldsValidated == true
-    {
-        // reset all fields
-       print("validated")
-    } else {
-        print("not Validated")
+        if datePopupValidated == true && textfieldsValidated == true
+        {
+            print("validated")
         }
-        
-       
+        else
+        {
+            print("not Validated")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // prepares data for segue before it is displayd to user
@@ -122,3 +135,19 @@ extension PrioritizeViewController: UITextFieldDelegate {
     }
     
 }
+
+extension PrioritizeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "" // change to data that will be passed
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10 // change to amount of data to be passed
+    }
+    
+}
+
+
+

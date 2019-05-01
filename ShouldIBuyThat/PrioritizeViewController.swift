@@ -27,6 +27,7 @@ class PrioritizeViewController: UIViewController {
     var setTimes = (current: Date(), selected: Date())
     
     var priorityItems: [String] = []
+    var priorityDetails: [String] = []
     
 
     @IBAction func sliderChanged(_ sender: UISlider) {
@@ -100,10 +101,22 @@ class PrioritizeViewController: UIViewController {
     func insertNewPriority() {
        
         
-        let rowTitle = "P: \(priorityValue) - \(myItems.item) - by: \(formatDate(myItems.selectedDate))"
+        let rowTitle = myItems.item
+        var rowDetails = ""
+        if myItems.selected == true
+        {
+            rowDetails = "Cost: \(myItems.price) Date Needed: \(formatDate(myItems.selectedDate))"
+        }
+        else
+        {
+            rowDetails = "Cost: \(myItems.price) Date Needed: Whenever"
+            
+        }
         priorityItems.append(rowTitle) // append new item to array that will hold values in table
+        priorityDetails.append(rowDetails)
         
         let indexPath = IndexPath(row: priorityItems.count - 1, section: 0) // add the new value to end of table
+        
         itemsTableView.beginUpdates()
         itemsTableView.insertRows(at: [indexPath], with: .automatic)
         itemsTableView.endUpdates()
@@ -154,10 +167,12 @@ extension PrioritizeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let priorityTitle = priorityItems[indexPath.row]
+        let priorityDetail = priorityDetails[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = priorityTitle // change to data that will be passed
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
+        cell.nameLbl.text = priorityTitle // change to data that will be passed
+        cell.detailsLbl.text = priorityDetail
+        cell.getColorFor(priorityValue)
         return cell
     }
     
@@ -172,7 +187,8 @@ extension PrioritizeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            priorityItems.remove(at: indexPath.row) // remove item from array
+            priorityItems.remove(at: indexPath.row) // remove item from arrays
+            priorityDetails.remove(at: indexPath.row)
             
             itemsTableView.beginUpdates()
             itemsTableView.deleteRows(at: [indexPath], with: .automatic) // delete row from table

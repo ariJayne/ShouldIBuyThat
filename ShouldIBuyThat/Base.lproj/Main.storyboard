@@ -389,24 +389,55 @@
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="8d2-S5-Lwe" rowHeight="50" style="IBUITableViewCellStyleDefault" id="x8e-H1-5W8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="x8e-H1-5W8" customClass="CustomTableViewCell" customModule="ShouldIBuyThat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="365" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x8e-H1-5W8" id="s1T-8v-Ujw">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="x8e-H1-5W8" id="s1T-8v-Ujw" customClass="CustomTableViewCell" customModule="ShouldIBuyThat" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="365" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8d2-S5-Lwe">
-                                                    <rect key="frame" x="15" y="0.0" width="335" height="49.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyb-ek-Cv9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="49.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="cyV-Mj-ysl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIN-R7-PiP">
+                                                    <rect key="frame" x="60" y="28.5" width="305" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnV-HH-zC6">
+                                                    <rect key="frame" x="60" y="0.0" width="305" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="fyb-ek-Cv9" firstAttribute="top" secondItem="s1T-8v-Ujw" secondAttribute="top" id="2AF-9t-PZc"/>
+                                                <constraint firstItem="aIN-R7-PiP" firstAttribute="leading" secondItem="fyb-ek-Cv9" secondAttribute="trailing" id="7bB-0v-Vfa"/>
+                                                <constraint firstAttribute="bottom" secondItem="aIN-R7-PiP" secondAttribute="bottom" id="QeB-nO-Dum"/>
+                                                <constraint firstItem="PnV-HH-zC6" firstAttribute="top" secondItem="s1T-8v-Ujw" secondAttribute="top" id="aee-GD-77e"/>
+                                                <constraint firstItem="PnV-HH-zC6" firstAttribute="leading" secondItem="fyb-ek-Cv9" secondAttribute="trailing" id="ayt-EF-rhQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="fyb-ek-Cv9" secondAttribute="bottom" id="dXf-SN-AuW"/>
+                                                <constraint firstItem="aIN-R7-PiP" firstAttribute="height" secondItem="PnV-HH-zC6" secondAttribute="height" id="hCn-aq-byw"/>
+                                                <constraint firstItem="fyb-ek-Cv9" firstAttribute="leading" secondItem="s1T-8v-Ujw" secondAttribute="leading" id="kyp-rB-eRY"/>
+                                                <constraint firstAttribute="trailing" secondItem="aIN-R7-PiP" secondAttribute="trailing" id="sV2-rH-USo"/>
+                                                <constraint firstAttribute="trailing" secondItem="PnV-HH-zC6" secondAttribute="trailing" id="vSX-NN-NE7"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="detailsLbl" destination="aIN-R7-PiP" id="dgG-ke-zwX"/>
+                                            <outlet property="nameLbl" destination="PnV-HH-zC6" id="cPB-Li-Pzr"/>
+                                            <outlet property="priorityLbl" destination="fyb-ek-Cv9" id="rte-1E-LF9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>

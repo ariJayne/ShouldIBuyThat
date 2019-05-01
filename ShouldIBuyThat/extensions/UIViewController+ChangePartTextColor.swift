@@ -11,25 +11,23 @@ import UIKit
 
 extension UIViewController {
     
-    func changeTextColor(For text: String) {
+    func changeTextColor(For text: String) -> NSMutableAttributedString {
+        let txt = text
+        let range = (txt as NSString).range(of: txt)
         
-        let redFont = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        let greenFont = [NSAttributedString.Key.foregroundColor: UIColor.green]
-        let orangeFont = [NSAttributedString.Key.foregroundColor: UIColor.orange]
-        let whiteFont = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
+        let attributedString = NSMutableAttributedString(string: txt)
         
         switch text {
         case "low":
-            
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: range)
         case "med":
-            
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: range)
         case "high":
-            
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.green, range: range)
         default:
-           
+           attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: range)
         }
        
-        
+        return attributedString
     }
 }

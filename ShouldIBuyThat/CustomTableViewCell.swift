@@ -10,11 +10,11 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var priorityLbl: UILabel!
+@IBOutlet weak var priorityLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var detailsLbl: UILabel!
     
-    func getColorFor(_ priority: String) {
+   func getColorFor(_ priority: String) {
         priorityLbl.text = priority
         
         switch priority

@@ -113,7 +113,7 @@ class PrioritizeViewController: UIViewController {
             
         }
         priorityItems.append(rowTitle) // append new item to array that will hold values in table
-        priorityDetails.append(rowDetails)
+      priorityDetails.append(rowDetails)
         
         let indexPath = IndexPath(row: priorityItems.count - 1, section: 0) // add the new value to end of table
         
@@ -167,7 +167,7 @@ extension PrioritizeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let priorityTitle = priorityItems[indexPath.row]
-        let priorityDetail = priorityDetails[indexPath.row]
+      let priorityDetail = priorityDetails[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.nameLbl.text = priorityTitle // change to data that will be passed
@@ -188,7 +188,7 @@ extension PrioritizeViewController: UITableViewDelegate, UITableViewDataSource {
         
         if editingStyle == .delete {
             priorityItems.remove(at: indexPath.row) // remove item from arrays
-            priorityDetails.remove(at: indexPath.row)
+           priorityDetails.remove(at: indexPath.row)
             
             itemsTableView.beginUpdates()
             itemsTableView.deleteRows(at: [indexPath], with: .automatic) // delete row from table

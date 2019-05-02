@@ -124,7 +124,7 @@ class PrioritizeViewController: UIViewController {
             
                 finishBuildingRow(with: rowDetails)
             }
-            else
+            else if myItems.selected == false
             {
                 rowDetails = "Cost: $\(myItems.price)  Hrs: \(myItems.getHoursDays.hours)  Due: Whenever"
                 finishBuildingRow(with: rowDetails)

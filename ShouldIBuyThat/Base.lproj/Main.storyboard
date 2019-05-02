@@ -210,7 +210,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="uvK-6E-hCm"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="uvK-6E-hCm">
+                        <color key="badgeColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="lbD-PK-fwe"/>
                     <connections>
                         <outlet property="addBtn" destination="b1u-NR-vKd" id="zKI-nQ-JwD"/>
@@ -510,7 +512,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="08W-DE-Nfq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Prioritize" id="fax-uw-bUL"/>
+                    <tabBarItem key="tabBarItem" title="Prioritize" image="list" selectedImage="list" id="fax-uw-bUL">
+                        <color key="badgeColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="wdA-s4-qVL"/>
                     <connections>
                         <outlet property="addBtn" destination="miN-08-p6E" id="vsN-Um-Gfo"/>
@@ -653,6 +657,10 @@
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="home" width="30" height="30"/>
+        <image name="list" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="pBU-wC-vSB"/>
     </inferredMetricsTieBreakers>

@@ -18,7 +18,12 @@ class ItemModel: NSObject { // to be shared between both view controllers
     var selectedDate = Date()
     var whenever = ""
     
+    var hoursNeeded = 0.0
+    
+    var getHoursDays = (hours: "nil", days: "nil")
     var addToPrioritize = false
+    
+    
 
     let numberFormatter: NumberFormatter = { // format for decimal places
         let nf = NumberFormatter()
@@ -28,8 +33,8 @@ class ItemModel: NSObject { // to be shared between both view controllers
         return nf
     }()
     
-    func getHoursNeeded() -> String {
-        let hoursNeeded = price / rate
+    func getHoursNeeded() {
+        hoursNeeded = price / rate
         if selected == true
         {
             let components = Calendar.current.dateComponents([.day], from: currentDate, to: selectedDate)
@@ -38,20 +43,16 @@ class ItemModel: NSObject { // to be shared between both view controllers
                 let hoursPerDay = hoursNeeded / Double(days)
                 if let hoursPerDay = numberFormatter.string(from: NSNumber(value: hoursPerDay))
                 {
-                    return "\(hoursPerDay) hours per day for \(days) day(s)"
+                    getHoursDays = (hoursPerDay, String(days))
                 }
             }
         }
-        else
-        {
-            if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded))
-            {
-                return "\(hoursNeeded) hours total"
+        else {
+            if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded)){
+                getHoursDays = (hoursNeeded, "nil")
             }
         }
-        return ""
-}
-    
-    
+        
+    }
 
 }// end class

@@ -23,8 +23,10 @@ class CustomTableViewCell: UITableViewCell {
             priorityLbl.backgroundColor = UIColor.yellow
         case "med":
             priorityLbl.backgroundColor = UIColor.orange
+            priorityLbl.textColor = UIColor.lightGray
         case "high":
             priorityLbl.backgroundColor = UIColor.red
+            priorityLbl.textColor = UIColor.white
         default:
             print("something went wrong.")
         }

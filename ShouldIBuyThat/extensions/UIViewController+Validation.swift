@@ -45,4 +45,16 @@ extension UIViewController {
         return true // return validated
     }
     
+    
+    func displayNotEnoughTimeError() {
+
+        let myAlert = UIAlertController(title: "Alert", message: "Hours needed exceed 24 hours per day. Please try a different date or select whenever", preferredStyle: UIAlertController.Style.alert)
+            
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil )
+            
+        myAlert.addAction(okAction)
+        self.present(myAlert, animated: true)
+        
+    }
+        
 }// end extension

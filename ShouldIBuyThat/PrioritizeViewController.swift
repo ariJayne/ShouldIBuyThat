@@ -73,10 +73,11 @@ class PrioritizeViewController: UIViewController {
         if datePopupValidated == true && textfieldsValidated == true
         {
             setNewValuesToModel(including: setTimes.current, setTimes.selected)
-            
+
             insertNewPriority()
             
             resetFields()
+            
         }
     }
     
@@ -110,21 +111,36 @@ class PrioritizeViewController: UIViewController {
     }
     
     func insertNewPriority() {
-
-        let rowTitle = myItems.item
         var rowDetails = ""
         
         myItems.getHoursNeeded()
         
-        if myItems.selected == true
+        if myItems.validateHours == true
         {
-            rowDetails = "Cost: $\(myItems.price) Hrs/Day: \(myItems.getHoursDays.hours)/\(myItems.getHoursDays.days)  Due: \(formatDate(myItems.selectedDate))"
+        
+            if myItems.selected == true
+            {
+                rowDetails = "Cost: $\(myItems.price) Hrs/Day: \(myItems.getHoursDays.hours)/\(myItems.getHoursDays.days)  Due: \(formatDate(myItems.selectedDate))"
+            
+                finishBuildingRow(with: rowDetails)
+            }
+            else
+            {
+                rowDetails = "Cost: $\(myItems.price)  Hrs: \(myItems.getHoursDays.hours)  Due: Whenever"
+                finishBuildingRow(with: rowDetails)
+            }
         }
         else
         {
-            rowDetails = "Cost: $\(myItems.price)  Hrs: \(myItems.getHoursDays.hours)  Due: Whenever"
-            
+            displayNotEnoughTimeError()
         }
+       
+    }
+    
+    func finishBuildingRow(with rowDetails: String) {
+        
+        let rowTitle = myItems.item
+        
         priorityItems.append(rowTitle) // append new item to array that will hold values in table
         priorityDetails.append(rowDetails)
         
@@ -132,7 +148,7 @@ class PrioritizeViewController: UIViewController {
         
         itemsTableView.beginUpdates()
         itemsTableView.insertRows(at: [indexPath], with: .automatic)
-        itemsTableView.endUpdates()  
+        itemsTableView.endUpdates()
     }
     
     func resetFields() {

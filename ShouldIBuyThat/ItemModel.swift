@@ -5,7 +5,7 @@
 //  Created by Ariana on 4/28/19.
 //  Copyright © 2019 Ariana. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 class ItemModel: NSObject { // to be shared between both view controllers
@@ -23,6 +23,7 @@ class ItemModel: NSObject { // to be shared between both view controllers
     var getHoursDays = (hours: "nil", days: "nil")
     var addToPrioritize = false
     
+    var validateHours = false
     
 
     let numberFormatter: NumberFormatter = { // format for decimal places
@@ -41,18 +42,31 @@ class ItemModel: NSObject { // to be shared between both view controllers
             if let days = components.day
             {
                 let hoursPerDay = hoursNeeded / Double(days)
-                if let hoursPerDay = numberFormatter.string(from: NSNumber(value: hoursPerDay))
+                
+                if hoursPerDay <= 24
                 {
-                    getHoursDays = (hoursPerDay, String(days))
+                    if let hoursPerDay = numberFormatter.string(from: NSNumber(value: hoursPerDay))
+                    {
+                        getHoursDays = (hoursPerDay, String(days))
+                        validateHours = true
+                    }
+                }
+                else
+                {
+                    validateHours = false
                 }
             }
         }
-        else {
-            if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded)){
+        else
+        {
+            if let hoursNeeded = numberFormatter.string(from: NSNumber(value: hoursNeeded))
+            {
                 getHoursDays = (hoursNeeded, "nil")
+                validateHours = true
             }
         }
-        
     }
-
+    
+   
+    
 }// end class

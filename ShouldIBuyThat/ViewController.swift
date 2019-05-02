@@ -42,12 +42,20 @@ class ViewController: UIViewController {
         
         datePopupValidated = validateFor(dateValue: setTimes.current, wheneverValue: myItems.whenever, currentDate: setTimes.selected)
         
+        
+        
         if datePopupValidated == true && textfieldsValidated == true
         {
             setModelValues(including: setTimes.current, setTimes.selected)
             myItems.getHoursNeeded()
-            displayResults()
-            updateAddBtn()
+            if myItems.validateHours == true
+            {
+                displayResults()
+                updateAddBtn()
+            }
+            else {
+                displayNotEnoughTimeError()
+            }
         }
         
         myItems.addToPrioritize = false // so data does not pass to priorityVC before addBtn is pressed
@@ -75,6 +83,7 @@ class ViewController: UIViewController {
         if myItems.getHoursDays.days != "nil" && myItems.getHoursDays.hours != "nil"
         {
             displayLbl.text = "\(myItems.getHoursDays.hours) hour(s) per day for \(myItems.getHoursDays.days) day(s)"
+            
         }
         else
         {
